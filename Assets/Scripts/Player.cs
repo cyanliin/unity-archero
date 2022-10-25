@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public float speed = 10;
     public Joystick joyStick;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
 
     private CharacterController controller;
 
@@ -47,5 +49,17 @@ public class Player : MonoBehaviour
 
         // 移動角色位置
         controller.Move(dir * speed * Time.deltaTime);
+
+        // 射擊
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
+    }
+
+    void Fire()
+    {
+        // 產生出子彈
+        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
     }
 }
