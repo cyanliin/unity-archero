@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 10;
+    public Joystick joyStick;
 
     private CharacterController controller;
 
@@ -16,8 +17,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 取得方向鍵輸入
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        // float h = Input.GetAxis("Horizontal");
+        // float v = Input.GetAxis("Vertical");
+
+        // 取得虛擬搖桿輸入
+        float h = joyStick.Horizontal;
+        float v = joyStick.Vertical;
 
         // 合成方向向量
         Vector3 dir = new Vector3(h, 0, v);
